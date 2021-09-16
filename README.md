@@ -1,10 +1,37 @@
 
-##_ETL pipline project for Music data_
+### ETL pipline project for Music data
 
 The main goal of this project is for building ETL pipline.
 Extracting data from JSON file format, 
 Transforming data from timestamp to date, hour, week ...etc
 Loading data to Postgres data warehouse.
+
+### How to run the Python scripts
+Run create_tables.py
+```python
+python3 create_tables.py
+```
+
+Run etl.py
+```python
+python3 etl.py
+```
+### Explanation of the files in the repository
+sql_queries.py:
+- to declare variables for drop, create, insert queries.
+
+create_table.py:
+- To connect database.
+- To execute drop_table and create table functions to drop and create tables.
+
+etl.py:
+- To extract data from the JSON format files.
+- To transform timestamp type data to date type data.
+- To load data to database.
+
+test.ipynb
+- To test queries for checking data whether saved correctly or not.
+
 
 Testing that data successfully was loaded.
 
