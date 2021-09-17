@@ -1,5 +1,6 @@
 import os
 import glob
+from pandas._libs.tslibs import timestamps
 import psycopg2
 import pandas as pd
 from sql_queries import *
@@ -41,7 +42,7 @@ def process_log_file(cur, filepath):
 
     t = pd.to_datetime(df.ts, unit="ms")
 
-    time_data = (df.ts, t.dt.hour, t.dt.day, t.dt.weekofyear,
+    time_data = (t, t.dt.hour, t.dt.day, t.dt.weekofyear,
                  t.dt.month, t.dt.year, t.dt.weekday)
     column_labels = ('start_time', 'hour', 'day',
                      'week', 'month', 'year', 'weekday')
@@ -70,7 +71,7 @@ def process_log_file(cur, filepath):
         else:
             songid, artistid = None, None
 
-        songplay_data = (row.ts, row.userId, row.level, songid,
+        songplay_data = (pd.to_datetime(row.ts), row.userId, row.level, songid,
                          artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
