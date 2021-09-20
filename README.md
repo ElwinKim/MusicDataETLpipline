@@ -32,6 +32,8 @@ etl.py:
 test.ipynb
 - To test queries for checking data whether saved correctly or not.
 
+### ER Diagram
+![ER Diagram](sparkifydb_erd.png)
 
 Testing that data successfully was loaded.
 
